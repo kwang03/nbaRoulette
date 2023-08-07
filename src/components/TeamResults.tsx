@@ -34,22 +34,6 @@ export class TeamResults extends React.Component<TeamProps>{
     }
 
     async fetchData(team: string) {
-        // const url = 'https://api-nba-v1.p.rapidapi.com/players?team=1&season=2021';
-        // const options = {
-        //   method: 'GET',
-        //   headers: {
-        //     'X-RapidAPI-Key': '49c6138059msh78f27c3b84c094dp13883djsnf27c15f7e301',
-        //     'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
-        //   }
-        // };
-        
-        // try {
-        //     const response = await fetch(url, options);
-        //     const result = await response.text();
-        //     console.log(result);
-        // } catch (error) {
-        //     console.error(error);
-        // }
         return {
             "get": "players/",
             "parameters": {
