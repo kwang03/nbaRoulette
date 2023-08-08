@@ -5,7 +5,7 @@ import { Wheel } from './components/Wheel';
 import Popup from 'reactjs-popup';
 
 function App() {
-  const [currentlineup, updatelineup] = useState([]);
+  const [currentlineup, updatelineup] = useState(["a","b","c","d"]);
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
 
@@ -15,23 +15,30 @@ function App() {
         Build a NBA Lineup
       </header>
       <div className='App-body'>
-        <Wheel currentlineup={currentlineup} updatelineup={updatelineup}></Wheel>
-        <Lineup lineup={currentlineup}></Lineup>
-      </div>
-      {/* <button type="button" className="button" onClick={() => setOpen(o => !o)}>
-        Controlled Popup
-      </button>
-      <Popup open={open} closeOnDocumentClick onClose={closeModal}>
-        <div className="modal">
-          <a className="close" onClick={closeModal}>
-          &times;
-          </a>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae magni
-          omnis delectus nemo, maxime molestiae dolorem numquam mollitia, voluptate
-          ea, accusamus excepturi deleniti ratione sapiente! Laudantium, aperiam
-          doloribus. Odit, aut.
+        <Wheel open={open} setopen={setOpen} currentlineup={currentlineup} updatelineup={updatelineup}></Wheel>
+        <div className='lineup'>
+          <Lineup lineup={currentlineup}></Lineup>
+          <button className='reset' onClick={() => {updatelineup([])}}>
+            Reset
+          </button>
         </div>
-      </Popup> */}
+        
+      </div>
+      <Popup open={open} closeOnDocumentClick onClose={closeModal} modal>
+        <div className="modal">
+          <div className="header"> Your Final Team </div>
+
+          <div className='content'>
+            <Lineup lineup={currentlineup}></Lineup>
+          </div>
+          <div className="actions">
+            <button className='playAgain' onClick={() => {updatelineup([]);
+            closeModal()}}>
+              Play again
+            </button>
+          </div>
+        </div>
+      </Popup>
     </div>
   );
 }

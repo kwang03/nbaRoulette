@@ -47,6 +47,18 @@
   color: white;
 }
 
+.lineup {
+  display:flex;
+  flex-direction: column;
+}
+
+.reset {
+  padding: 15px;
+  width: 50%;
+  align-self: center;
+  margin: 50px;
+}
+
 .lineup-table {
   display: flex;
   flex-direction: column;
@@ -74,4 +86,28 @@
 
 .logo{
   width: 400px;
+}
+
+.modal {
+  background-color: #f2f2f2;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 50px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+  color: #282c34;
+  font-size: 30px;
+}
+
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
 }

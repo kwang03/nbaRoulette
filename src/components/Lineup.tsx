@@ -29,7 +29,7 @@ export class Lineup extends React.Component<LineupProps>{
         
         return (
             <table className='lineup-table'>
-                <thead>
+                <thead style={{margin:50}}>
                     Your Lineup
                 </thead>
                 <tbody>

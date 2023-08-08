@@ -7,6 +7,8 @@ const teams = require('../res/NBA.json');
 interface WheelProps {
   updatelineup: Function
   currentlineup: string[]
+  open: boolean
+  setopen: Function
 }
 
 interface WheelState {
@@ -84,8 +86,8 @@ export class Wheel extends React.Component<WheelProps>{
       this.setState({show: false});
 
       //  Reach full roster
-      if (this.props.currentlineup.length === 5) {
-
+      if (this.props.currentlineup.length === 5 && this.props.currentlineup.findIndex((element) => element === undefined) === -1) {
+        this.props.setopen(true);
       }
     }
     
