@@ -5,7 +5,7 @@ import { Wheel } from './components/Wheel';
 import Popup from 'reactjs-popup';
 
 function App() {
-  const [currentlineup, updatelineup] = useState(["a","b","c","d"]);
+  const [currentlineup, updatelineup] = useState([]);
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
 
