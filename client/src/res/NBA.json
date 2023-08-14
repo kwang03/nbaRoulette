@@ -129,7 +129,7 @@
                 "#FFB81C"
             ],
             "did": 1,
-            "imgURL": "http://fr.global.nba.com/media/img/teams/logos/CLE_logo.svg",
+            "imgURL": "https://loodibee.com/wp-content/uploads/cleveland-cavaliers-logo-symbol.png",
             "name": "Cavaliers",
             "pop": 2.1,
             "region": "Cleveland",
@@ -452,7 +452,7 @@
                 "#E03A3E"
             ],
             "did": 4,
-            "imgURL": "http://fr.global.nba.com/media/img/teams/logos/POR_logo.svg",
+            "imgURL": "https://upload.wikimedia.org/wikipedia/commons/3/33/Portland-Trail-Blazers-Logo-2002.png",
             "name": "Trailblazers",
             "pop": 2.4,
             "region": "Portland",
@@ -486,7 +486,7 @@
                 "#c4ced4"
             ],
             "did": 3,
-            "imgURL": "http://fr.global.nba.com/media/img/teams/logos/SAS_logo.svg",
+            "imgURL": "https://loodibee.com/wp-content/uploads/san-antonio-spurs-logo-symbol.png",
             "name": "Spurs",
             "pop": 2.5,
             "region": "San Antonio",

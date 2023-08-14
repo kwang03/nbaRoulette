@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TailSpin } from  'react-loader-spinner'
 
 const fetch = require('node-fetch');
 
@@ -14,6 +15,7 @@ interface TeamState {
     winner: string
     logoURL: string
     players: string[]
+    loading: boolean
 }
 
 
@@ -27,394 +29,34 @@ export class TeamResults extends React.Component<TeamProps>{
         this.state = {
             winner: this.props.fullName[index],
             logoURL: this.props.logos[index],
-            players: []
+            players: [],
+            loading: false
         }
 
         this.updateTeamInfo(props.abbrev).then((list) => {this.setState({players: list})});
     }
 
     async fetchData(team: string) {
-        return {
-            "get": "players/",
-            "parameters": {
-              "season": "2021",
-              "team": "1"
-            },
-            "errors": [],
-            "results": 43,
-            "response": [
-              {
-                "id": 553,
-                "firstname": "Lou",
-                "lastname": "Williams",
-                "birth": {
-                  "date": "1986-10-27",
-                  "country": "USA"
-                },
-                "nba": {
-                  "start": 2005,
-                  "pro": 16
-                },
-                "height": {
-                  "feets": "6",
-                  "inches": "2",
-                  "meters": "1.88"
-                },
-                "weight": {
-                  "pounds": "175",
-                  "kilograms": "79.4"
-                },
-                "college": "South Gwinnett HS (GA)",
-                "affiliation": "South Gwinnett HS (GA)/USA",
-                "leagues": {
-                  "standard": {
-                    "jersey": 6,
-                    "active": true,
-                    "pos": "G"
-                  }
-                }
-              },
-              {
-                "id": 402,
-                "firstname": "Jahlil",
-                "lastname": "Okafor",
-                "birth": {
-                  "date": null,
-                  "country": null
-                },
-                "nba": {
-                  "start": 0,
-                  "pro": 0
-                },
-                "height": {
-                  "feets": null,
-                  "inches": null,
-                  "meters": null
-                },
-                "weight": {
-                  "pounds": null,
-                  "kilograms": null
-                },
-                "college": null,
-                "affiliation": null,
-                "leagues": {
-                  "standard": {
-                    "jersey": 14,
-                    "active": false,
-                    "pos": null
-                  }
-                }
-              },
-              {
-                "id": 564,
-                "firstname": "Delon",
-                "lastname": "Wright",
-                "birth": {
-                  "date": "1992-04-26",
-                  "country": "USA"
-                },
-                "nba": {
-                  "start": 2015,
-                  "pro": 6
-                },
-                "height": {
-                  "feets": "6",
-                  "inches": "5",
-                  "meters": "1.96"
-                },
-                "weight": {
-                  "pounds": "185",
-                  "kilograms": "83.9"
-                },
-                "college": "Utah",
-                "affiliation": "Utah/USA",
-                "leagues": {
-                  "standard": {
-                    "jersey": null,
-                    "active": true,
-                    "pos": "G"
-                  }
-                }
-              },
-              {
-                "id": 588,
-                "firstname": "Cat",
-                "lastname": "Barber",
-                "birth": {
-                  "date": "1994-07-25",
-                  "country": "USA"
-                },
-                "nba": {
-                  "start": 2021,
-                  "pro": 0
-                },
-                "height": {
-                  "feets": null,
-                  "inches": null,
-                  "meters": null
-                },
-                "weight": {
-                  "pounds": null,
-                  "kilograms": null
-                },
-                "college": "North Carolina State",
-                "affiliation": "North Carolina State/USA",
-                "leagues": {
-                  "standard": {
-                    "jersey": 5,
-                    "active": false,
-                    "pos": null
-                  }
-                }
-              },
-              {
-                "id": 329,
-                "firstname": "Timothe",
-                "lastname": "Luwawu-Cabarrot",
-                "birth": {
-                  "date": "1995-05-09",
-                  "country": "France"
-                },
-                "nba": {
-                  "start": 2016,
-                  "pro": 5
-                },
-                "height": {
-                  "feets": "6",
-                  "inches": "7",
-                  "meters": "2.01"
-                },
-                "weight": {
-                  "pounds": "215",
-                  "kilograms": "97.5"
-                },
-                "college": "Mega Basket",
-                "affiliation": "Mega Basket/France",
-                "leagues": {
-                  "standard": {
-                    "jersey": 7,
-                    "active": true,
-                    "pos": "G-F"
-                  },
-                  "africa": {
-                    "jersey": null,
-                    "active": true,
-                    "pos": "G-F"
-                  }
-                }
-              },
-              {
-                "id": 761,
-                "firstname": "John",
-                "lastname": "Collins",
-                "birth": {
-                  "date": "1997-09-23",
-                  "country": "USA"
-                },
-                "nba": {
-                  "start": 2017,
-                  "pro": 4
-                },
-                "height": {
-                  "feets": "6",
-                  "inches": "9",
-                  "meters": "2.06"
-                },
-                "weight": {
-                  "pounds": "226",
-                  "kilograms": "102.5"
-                },
-                "college": "Wake Forest",
-                "affiliation": "Wake Forest/USA",
-                "leagues": {
-                  "standard": {
-                    "jersey": 20,
-                    "active": true,
-                    "pos": "F-C"
-                  },
-                  "africa": {
-                    "jersey": 20,
-                    "active": true,
-                    "pos": "F-C"
-                  },
-                  "vegas": {
-                    "jersey": 20,
-                    "active": true,
-                    "pos": "F-C"
-                  },
-                  "utah": {
-                    "jersey": 20,
-                    "active": true,
-                    "pos": "F-C"
-                  }
-                }
-              },
-              {
-                "id": 738,
-                "firstname": "Jordan",
-                "lastname": "Bell",
-                "birth": {
-                  "date": "1995-01-07",
-                  "country": "USA"
-                },
-                "nba": {
-                  "start": 2017,
-                  "pro": 4
-                },
-                "height": {
-                  "feets": "6",
-                  "inches": "7",
-                  "meters": "2.01"
-                },
-                "weight": {
-                  "pounds": "216",
-                  "kilograms": "98.0"
-                },
-                "college": "Oregon",
-                "affiliation": "Oregon/USA",
-                "leagues": {
-                  "standard": {
-                    "jersey": 20,
-                    "active": true,
-                    "pos": "F"
-                  },
-                  "sacramento": {
-                    "jersey": 2,
-                    "active": true,
-                    "pos": "F"
-                  },
-                  "vegas": {
-                    "jersey": 24,
-                    "active": true,
-                    "pos": "F"
-                  }
-                }
-              },
-              {
-                "id": 802,
-                "firstname": "Wes",
-                "lastname": "Iwundu",
-                "birth": {
-                  "date": "1994-12-20",
-                  "country": "USA"
-                },
-                "nba": {
-                  "start": 2017,
-                  "pro": 0
-                },
-                "height": {
-                  "feets": null,
-                  "inches": null,
-                  "meters": null
-                },
-                "weight": {
-                  "pounds": null,
-                  "kilograms": null
-                },
-                "college": "Kansas State",
-                "affiliation": "Kansas State/USA",
-                "leagues": {
-                  "standard": {
-                    "jersey": 24,
-                    "active": false,
-                    "pos": null
-                  },
-                  "vegas": {
-                    "jersey": 25,
-                    "active": true,
-                    "pos": "F"
-                  }
-                }
-              },
-              {
-                "id": 1011,
-                "firstname": "Cameron",
-                "lastname": "Oliver",
-                "birth": {
-                  "date": "1996-07-11",
-                  "country": "USA"
-                },
-                "nba": {
-                  "start": 2020,
-                  "pro": 1
-                },
-                "height": {
-                  "feets": "6",
-                  "inches": "8",
-                  "meters": "2.03"
-                },
-                "weight": {
-                  "pounds": "239",
-                  "kilograms": "108.4"
-                },
-                "college": "Nevada",
-                "affiliation": "Nevada/USA",
-                "leagues": {
-                  "standard": {
-                    "jersey": 21,
-                    "active": true,
-                    "pos": "F"
-                  },
-                  "vegas": {
-                    "jersey": 27,
-                    "active": true,
-                    "pos": "F"
-                  },
-                  "sacramento": {
-                    "jersey": 27,
-                    "active": true,
-                    "pos": "F"
-                  }
-                }
-              },
-              {
-                "id": 980,
-                "firstname": "Kevin",
-                "lastname": "Huerter",
-                "birth": {
-                  "date": "1998-08-27",
-                  "country": "USA"
-                },
-                "nba": {
-                  "start": 2018,
-                  "pro": 3
-                },
-                "height": {
-                  "feets": "6",
-                  "inches": "7",
-                  "meters": "2.01"
-                },
-                "weight": {
-                  "pounds": "198",
-                  "kilograms": "89.8"
-                },
-                "college": "Maryland",
-                "affiliation": "Maryland/USA",
-                "leagues": {
-                  "standard": {
-                    "jersey": 3,
-                    "active": true,
-                    "pos": "G-F"
-                  },
-                  "vegas": {
-                    "jersey": 1,
-                    "active": true,
-                    "pos": "G"
-                  },
-                  "utah": {
-                    "jersey": 1,
-                    "active": true,
-                    "pos": "G"
-                  }
-                }
-              },
-            ]
-          }
+      const team_id = await this.getTeamId(team);
+      const url = 'http://localhost:4000/api/players?' + new URLSearchParams({
+        team: team_id.toString(),
+        season: process.env.SEASON === undefined ? '2022' : process.env.SEASON
+      });
+      
+      try {
+        const response = await fetch(url);
+        const result = await response.json();
+        return result
+      } catch (error) {
+        console.error(error);
+      }
     }
 
     async updateTeamInfo(team: string): Promise<string[]> {
         const playerslist: string[] = []
-        this.fetchData(team).then((value) => {
+        try {
+            this.setState({loading: true});
+            await this.fetchData(team).then((value) => {
             for (const index in value["response"]) {
                 const playerInfo = value["response"][index];
     
@@ -423,9 +65,29 @@ export class TeamResults extends React.Component<TeamProps>{
     
                 playerslist.push(firstname + " " + lastname);
             }
-        });
-
+          });
+        } catch (error) {
+          console.log(error)
+        } finally {
+          this.setState({loading: false});
+        }
         return playerslist;
+    }
+
+    async getTeamId(code: string): Promise<number> {
+      const url = 'http://localhost:4000/api/team?' + new URLSearchParams({
+        code: code
+      });
+      
+      try {
+        const response = await fetch(url);
+        const result = await response.json();
+        const id = result["response"][0]["id"];
+        return id;
+      } catch (error) {
+        console.error(error);
+        return -1;
+      }
     }
 
     componentDidUpdate(prevProps: Readonly<TeamProps>): void {
@@ -447,17 +109,30 @@ export class TeamResults extends React.Component<TeamProps>{
             <h2 className='chosen'>Chosen Team: {this.state.winner}</h2>
             <img className='logo' src={this.state.logoURL.toString()} alt={this.state.winner + " logo"}></img>
            
-            <form onSubmit={this.handlesubmit.bind(this)}>
-              <select required defaultValue={""}>
-                <option value="" disabled hidden>Choose player</option>
-                {this.state.players.map((player) => <option key={player} value={player}>{player}</option>)}
-              </select>
-              <select required defaultValue={""}>
-                <option value="" disabled hidden>Choose position</option>
-                {positions.map((position) => <option key={position} value={position}>{position}</option>)}
-              </select>
-              <input type="submit" value="Submit"/>
-            </form>
+            <div className='player-selection'>
+              {this.state.loading && <TailSpin
+                height="40"
+                width="40"
+                color="#4fa94d"
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+              />}
+              <form className='form' onSubmit={this.handlesubmit.bind(this)}>
+                <select required defaultValue={""}>
+                  <option value="" disabled hidden>Choose player</option>
+                  {this.state.players.map((player) => <option key={player} value={player}>{player}</option>)}
+                </select>
+                <select required defaultValue={""}>
+                  <option value="" disabled hidden>Choose position</option>
+                  {positions.map((position) => <option key={position} value={position}>{position}</option>)}
+                </select>
+                <input type="submit" value="Submit"/>
+              </form>
+            </div>
+            
         </div>
     }
 }

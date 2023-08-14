@@ -97,7 +97,7 @@ export class Wheel extends React.Component<WheelProps>{
               segments={segments}
               segColors={segColors}
               onFinished={(winner) => this.onFinished(winner)}
-              primaryColor='white'
+              primaryColor='#5A5A5A'
               contrastColor='white'
               buttonText='Spin'
               isOnlyOnce={false}
