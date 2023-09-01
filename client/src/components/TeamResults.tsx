@@ -9,6 +9,7 @@ interface TeamProps {
     logos: string[]
     fullName: string[]
     handlesubmit:Function
+    season: string
 }
 
 interface TeamState {
@@ -40,7 +41,7 @@ export class TeamResults extends React.Component<TeamProps>{
       const team_id = await this.getTeamId(team);
       const url = 'http://localhost:4000/api/players?' + new URLSearchParams({
         team: team_id.toString(),
-        season: process.env.SEASON === undefined ? '2022' : process.env.SEASON
+        season: this.props.season
       });
       
       try {

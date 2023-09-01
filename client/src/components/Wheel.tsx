@@ -7,8 +7,8 @@ const teams = require('../res/NBA.json');
 interface WheelProps {
   updatelineup: Function
   currentlineup: string[]
-  open: boolean
   setopen: Function
+  season: string
 }
 
 interface WheelState {
@@ -107,7 +107,7 @@ export class Wheel extends React.Component<WheelProps>{
               fontFamily='Times'
             />
             {this.state.show && 
-            <TeamResults handlesubmit={this.handleSubmit} abbrev={this.state.abbrev} segments={segments} logos={logos} fullName={fullName}></TeamResults>}
+            <TeamResults handlesubmit={this.handleSubmit} abbrev={this.state.abbrev} segments={segments} logos={logos} fullName={fullName} season={this.props.season}></TeamResults>}
           </div>
       
     }

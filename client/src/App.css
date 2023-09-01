@@ -23,6 +23,17 @@
   color: white;
 }
 
+.yearPopup {
+  background-color: antiquewhite;
+  display:flex;
+  flex-direction: column;
+  border: 5px solid;
+  align-items: center;
+  margin: 10px;
+  width: 100%;
+  padding: 50px;
+}
+
 .lineup {
   display:flex;
   flex-direction: column;
